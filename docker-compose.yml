@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  iotbay:
+    image: ${DOCKER_REGISTRY-}iotbay
+    build:
+      context: .
+      dockerfile: Dockerfile
