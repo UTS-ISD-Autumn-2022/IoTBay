@@ -20,6 +20,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// EUan is here
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
