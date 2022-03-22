@@ -1,11 +1,9 @@
-﻿namespace IoTBay.Models
+﻿namespace IoTBay.Models;
+public class Admin : User
 {
-    public class Admin : User
-    {
-        public Guid Id { get; set; }
+    public Guid Id { get; set; }
 
-        public Admin(string username, string password, string fullName, string email) : base(username, password, fullName, email)
-        {
-        }
+    public Admin(string username, string password, string fullName, string email) : base(username, password, fullName, email)
+    {
     }
 }
