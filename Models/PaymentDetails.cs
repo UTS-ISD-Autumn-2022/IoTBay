@@ -21,13 +21,14 @@ public class PaymentDetails
     [Precision(4)]
     public decimal ExpiryYear { get; set; }
 
-    public Guid UserId { get; set; }
+    public Customer Customer { get; set; }
 
-    public User User { get; set; }
-
-    public PaymentDetails(string cardName, User user)
+    public PaymentDetails(string cardName, decimal cardNumber, decimal cardCvc, decimal expiryMonth, decimal expiryYear)
     {
         CardName = cardName;
-        User = user;
+        CardNumber = cardNumber;
+        CardCvc = cardCvc;
+        ExpiryMonth = expiryMonth;
+        ExpiryYear = expiryYear;
     }
 }

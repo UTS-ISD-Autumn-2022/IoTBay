@@ -15,11 +15,11 @@ public abstract class User
     [MaxLength(31)]
     public string Username { get; set; }
 
-    [Column("Password", TypeName = "char(60)")]
     private string _password;
+    [Column("Password", TypeName = "char(60)")]
     public string Password
     {
-        private get => _password;
+        get => _password;
         set => _password = BCrypt.HashPassword(value);
     }
 
