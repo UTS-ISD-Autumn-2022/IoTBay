@@ -1,14 +1,16 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace IoTBay.Models
 {
     using BCrypt.Net;
 
+    [Index(nameof(Username), IsUnique = true)]
     public abstract class User
     {
 
-        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
 
         [MaxLength(31)]
         public string Username { get; set; }
