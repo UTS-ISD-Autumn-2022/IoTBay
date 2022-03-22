@@ -3,8 +3,6 @@
 namespace IoTBay.Models;
 public class Customer : User
 {
-    public Guid Id { get; set; }
-
     [MaxLength(63)]
     public string Address { get; set; }
 

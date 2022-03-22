@@ -3,8 +3,6 @@
 namespace IoTBay.Models;
 public class Employee : User
 {
-    public Guid Id { get; set; }
-
     [MaxLength(63)]
     public string Department { get; set; }
 
