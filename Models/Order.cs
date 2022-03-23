@@ -26,9 +26,7 @@ public class Order
 
     public OrderStatus Status { get; set; }
 
-    public ICollection<OrderProduct> Products { get; set; }
-
-    public int? CustomerId { get; set; }
+    public ICollection<Product> Products { get; } = new List<Product>();
 
     public Customer? Customer { get; set; }
 
@@ -39,6 +37,5 @@ public class Order
         DateOrdered = DateTime.Now;
         LastUpdate = DateTime.Now;
         Status = OrderStatus.Processing;
-        Products = new List<OrderProduct>();
     }
 }

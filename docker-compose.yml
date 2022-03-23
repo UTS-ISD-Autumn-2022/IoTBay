@@ -1,6 +1,13 @@
 version: '3.9'
 
 services:
+  iotbay-db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=A(!)TerriblePassw0rd1
+    ports:
+      - 1433:1433
   iotbay-app:
     image: ${DOCKER_REGISTRY-}iotbay
     build:
@@ -11,4 +18,5 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - 8080:80
-      - 4433:443
+    depends_on:
+      - iotbay-db

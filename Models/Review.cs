@@ -9,20 +9,12 @@ public class Review
     [MaxLength(255)]
     public string ReviewContent { get; set; }
 
-    public int CustomerId { get; set; }
-
     public Customer Customer { get; set; }
-
-    public int ProductId { get; set; }
 
     public Product Product { get; set; }
 
-    public Review(string reviewContent, int customerId, Customer customer, int productId, Product product)
+    public Review(string reviewContent)
     {
         ReviewContent = reviewContent;
-        CustomerId = customerId;
-        Customer = customer;
-        ProductId = productId;
-        Product = product;
     }
 }

@@ -15,13 +15,12 @@ public class Category
     [MaxLength(63)]
     public string ImgUrl { get; set; }
 
-    public ICollection<Product> Products { get; set; }
+    public ICollection<Product> Products { get; } = new List<Product>();
 
     public Category(string name, string description, string imgUrl)
     {
         Name = name;
         Description = description;
         ImgUrl = imgUrl;
-        Products = new List<Product>();
     }
 }
