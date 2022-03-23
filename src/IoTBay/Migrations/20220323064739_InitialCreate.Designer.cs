@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IoTBay.Migrations
 {
     [DbContext(typeof(IoTBayDbContext))]
-    [Migration("20220322122936_InitialCreate")]
+    [Migration("20220323064739_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,9 +65,6 @@ namespace IoTBay.Migrations
                         .HasMaxLength(63)
                         .HasColumnType("nvarchar(63)");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<Guid?>("CustomerUserId")
                         .HasColumnType("uniqueidentifier");
 
@@ -111,7 +108,7 @@ namespace IoTBay.Migrations
                         .HasPrecision(16)
                         .HasColumnType("decimal(16,2)");
 
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid>("CustomerUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("ExpiryMonth")
@@ -124,7 +121,7 @@ namespace IoTBay.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerUserId");
 
                     b.ToTable("PaymentDetails");
                 });
@@ -179,9 +176,6 @@ namespace IoTBay.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
 
                     b.Property<Guid>("CustomerUserId")
                         .HasColumnType("uniqueidentifier");
@@ -277,10 +271,6 @@ namespace IoTBay.Migrations
                         .HasMaxLength(63)
                         .HasColumnType("nvarchar(63)");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Customer_Id");
-
                     b.HasDiscriminator().HasValue("Customer");
                 });
 
@@ -292,9 +282,6 @@ namespace IoTBay.Migrations
                         .IsRequired()
                         .HasMaxLength(63)
                         .HasColumnType("nvarchar(63)");
-
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Role")
                         .IsRequired()
@@ -317,7 +304,7 @@ namespace IoTBay.Migrations
                 {
                     b.HasOne("IoTBay.Models.Customer", "Customer")
                         .WithMany("PaymentDetails")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("CustomerUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
