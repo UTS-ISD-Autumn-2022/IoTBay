@@ -1,4 +1,10 @@
+using IoTBay.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<IoTBayDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("iotbay-db")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
