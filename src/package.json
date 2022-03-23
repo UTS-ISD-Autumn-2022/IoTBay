@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "scss": "parcel build scss/style.scss --dist-dir wwwroot/css",
-    "js": "parcel build js/index.js --dist-dir wwwroot/js"
+    "scss": "parcel build scss/style.scss --dist-dir IoTBay/wwwroot/css",
+    "js": "parcel build js/index.js --dist-dir IoTBay/wwwroot/js"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.4",
