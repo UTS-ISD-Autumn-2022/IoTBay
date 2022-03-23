@@ -21,7 +21,7 @@ public class PaymentDetails
     [Precision(4)]
     public decimal ExpiryYear { get; set; }
 
-    public Customer Customer { get; set; }
+    public Customer Customer { get; set; } = null!;
 
     public PaymentDetails(string cardName, decimal cardNumber, decimal cardCvc, decimal expiryMonth, decimal expiryYear)
     {

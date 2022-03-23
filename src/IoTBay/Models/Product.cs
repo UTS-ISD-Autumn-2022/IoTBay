@@ -16,7 +16,7 @@ public class Product
     [MaxLength(63)]
     public string ImgUrl { get; set; }
 
-    public Category Category { get; set; }
+    public Category Category { get; set; } = null!;
 
     public int StockLevel { get; set; }
 

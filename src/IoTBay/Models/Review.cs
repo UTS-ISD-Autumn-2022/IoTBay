@@ -9,9 +9,9 @@ public class Review
     [MaxLength(255)]
     public string ReviewContent { get; set; }
 
-    public Customer Customer { get; set; }
+    public Customer Customer { get; set; } = null!;
 
-    public Product Product { get; set; }
+    public Product Product { get; set; } = null!;
 
     public Review(string reviewContent)
     {
