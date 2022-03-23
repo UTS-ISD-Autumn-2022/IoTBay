@@ -11,7 +11,7 @@ services:
   iotbay-app:
     image: ${DOCKER_REGISTRY-}iotbay
     build:
-      context: .
+      context: src/IoTBay
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
