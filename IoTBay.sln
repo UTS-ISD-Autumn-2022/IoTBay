@@ -1,31 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32210.238
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoTBay", "src/IoTBay/IoTBay.csproj", "{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1B9D1435-CE17-43F4-B2E3-D6792C7F54D4}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTBay", "src\IoTBay\IoTBay.csproj", "{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1E1D4FD7-9067-4CC4-9BD7-3EED1AFFD462}
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568} = {1B9D1435-CE17-43F4-B2E3-D6792C7F54D4}
 	EndGlobalSection
 EndGlobal
