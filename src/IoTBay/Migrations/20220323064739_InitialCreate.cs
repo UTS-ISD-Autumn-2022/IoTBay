@@ -35,9 +35,7 @@ namespace IoTBay.Migrations
                     Email = table.Column<string>(type: "nvarchar(63)", maxLength: 63, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Customer_Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(63)", maxLength: 63, nullable: true),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Department = table.Column<string>(type: "nvarchar(63)", maxLength: 63, nullable: true),
                     Role = table.Column<string>(type: "nvarchar(31)", maxLength: 31, nullable: true)
                 },
@@ -82,7 +80,6 @@ namespace IoTBay.Migrations
                     DateOrdered = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: true),
                     CustomerUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -105,14 +102,14 @@ namespace IoTBay.Migrations
                     CardCvc = table.Column<decimal>(type: "decimal(3,2)", precision: 3, nullable: false),
                     ExpiryMonth = table.Column<decimal>(type: "decimal(2,2)", precision: 2, nullable: false),
                     ExpiryYear = table.Column<decimal>(type: "decimal(4,2)", precision: 4, nullable: false),
-                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    CustomerUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PaymentDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PaymentDetails_Users_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_PaymentDetails_Users_CustomerUserId",
+                        column: x => x.CustomerUserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
@@ -125,7 +122,6 @@ namespace IoTBay.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ReviewContent = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
                     CustomerUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -181,9 +177,9 @@ namespace IoTBay.Migrations
                 column: "CustomerUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PaymentDetails_CustomerId",
+                name: "IX_PaymentDetails_CustomerUserId",
                 table: "PaymentDetails",
-                column: "CustomerId");
+                column: "CustomerUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
