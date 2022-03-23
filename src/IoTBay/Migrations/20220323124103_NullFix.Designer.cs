@@ -4,6 +4,7 @@ using IoTBay.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IoTBay.Migrations
 {
     [DbContext(typeof(IoTBayDbContext))]
-    partial class IoTBayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220323124103_NullFix")]
+    partial class NullFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,7 +97,7 @@ namespace IoTBay.Migrations
 
                     b.Property<decimal>("CardCvc")
                         .HasPrecision(3)
-                        .HasColumnType("decimal(3)");
+                        .HasColumnType("decimal(3,2)");
 
                     b.Property<string>("CardName")
                         .IsRequired()
@@ -104,18 +106,18 @@ namespace IoTBay.Migrations
 
                     b.Property<decimal>("CardNumber")
                         .HasPrecision(16)
-                        .HasColumnType("decimal(16)");
+                        .HasColumnType("decimal(16,2)");
 
                     b.Property<Guid>("CustomerUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("ExpiryMonth")
                         .HasPrecision(2)
-                        .HasColumnType("decimal(2)");
+                        .HasColumnType("decimal(2,2)");
 
                     b.Property<decimal>("ExpiryYear")
                         .HasPrecision(4)
-                        .HasColumnType("decimal(4)");
+                        .HasColumnType("decimal(4,2)");
 
                     b.HasKey("Id");
 
