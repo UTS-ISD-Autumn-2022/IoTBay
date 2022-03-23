@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1B9D1435-CE1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTBay", "src\IoTBay\IoTBay.csproj", "{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CA01211F-6845-4F42-8F78-C60937F6D71D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTBay.Tests", "tests\IoTBay.Tests\IoTBay.Tests.csproj", "{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,13 @@ Global
 		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568} = {1B9D1435-CE17-43F4-B2E3-D6792C7F54D4}
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2} = {CA01211F-6845-4F42-8F78-C60937F6D71D}
 	EndGlobalSection
 EndGlobal
