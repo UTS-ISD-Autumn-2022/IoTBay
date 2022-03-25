@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IoTBay.Controllers;
 
+/*
+ * Broken: Will fix later on
+ */
 public class UserController : Controller
 {
     private readonly ILogger<UserController> _logger;
