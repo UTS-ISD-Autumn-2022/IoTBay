@@ -6,6 +6,14 @@ namespace IoTBay.Models;
 
 using BCrypt.Net;
 
+public record LoginDetails
+{
+    [MaxLength(31)]
+    public string Username { get; set; } = string.Empty;
+
+    public string Password { get; set; } = string.Empty;
+}
+
 [Index(nameof(Username), IsUnique = true)]
 public abstract class User
 {
@@ -33,6 +41,7 @@ public abstract class User
 
     public User(string username, string password, string fullName, string email)
     {
+        UserId = Guid.NewGuid();
         Username = username;
         _password = BCrypt.HashPassword(password);
         FullName = fullName;
@@ -42,6 +51,6 @@ public abstract class User
 
     public bool VerifyPassword(string password)
     {
-        return BCrypt.Verify(password, Password);
+        return BCrypt.Verify(password, _password);
     }
 }
