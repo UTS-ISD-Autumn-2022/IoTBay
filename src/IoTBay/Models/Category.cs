@@ -6,13 +6,12 @@ public class Category
 {
     public int Id { get; set; }
 
-    [MaxLength(31)]
+    [MaxLength(63)]
     public string Name { get; set; }
 
-    [MaxLength(255)]
     public string Description { get; set; }
 
-    [MaxLength(63)]
+    [MaxLength(255)]
     public string ImgUrl { get; set; }
 
     public ICollection<Product> Products { get; } = new List<Product>();
