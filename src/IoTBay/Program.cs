@@ -1,35 +1,48 @@
 using IoTBay.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+builder
+    .Services
+    .AddDbContext<IoTBayDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("global-cloud-test")
+    )
+);
+builder
+    .Services
+    .AddDefaultIdentity<IdentityUser>(
+        options => options.SignIn.RequireConfirmedAccount = false
+    )
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<IoTBayDbContext>();
-builder.Services.AddDbContext<IoTBayDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("global-cloud-test")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-        options.SlidingExpiration = true;
-    });
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 10;
+    options.Password.RequiredUniqueChars = 3;
+
+    options.SignIn.RequireConfirmedEmail = false;
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+});
 
 var app = builder.Build();
 
-/*
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
-    AdminData.Init(services);
+    SeedUsers.Init(services);
 }
-*/
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

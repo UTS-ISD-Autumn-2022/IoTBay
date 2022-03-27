@@ -9,6 +9,7 @@ using IoTBay.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -21,11 +22,13 @@ public class AdminController : Controller
 {
     private readonly ILogger<AdminController> _logger;
     private readonly IoTBayDbContext _context;
+    private readonly SignInManager<IdentityUser> _signInManager;
 
-    public AdminController(ILogger<AdminController> logger, IoTBayDbContext context)
+    public AdminController(ILogger<AdminController> logger, IoTBayDbContext context, SignInManager<IdentityUser> signInManager)
     {
         _logger = logger;
         _context = context;
+        _signInManager = signInManager;
     }
 
     // GET: Admin
