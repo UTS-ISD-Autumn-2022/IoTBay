@@ -1,12 +1,12 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using IoTBay.Models;
 
 namespace IoTBay.Data;
 
-public class IoTBayDbContext : DbContext
+public class IoTBayDbContext : IdentityDbContext<IdentityUser>
 {
-    public DbSet<User> Users => Set<User>();
-    public DbSet<Admin> Admins => Set<Admin>();
     public DbSet<Employee> Employees => Set<Employee>();
     public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<PaymentDetails> PaymentDetails => Set<PaymentDetails>();

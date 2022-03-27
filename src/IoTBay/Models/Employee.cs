@@ -1,17 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace IoTBay.Models;
-public class Employee : User
+
+public class Employee
 {
-    [MaxLength(63)]
-    public string Department { get; set; }
+    public Guid Id { get; set; }
+    
+    public string LoginCredentialsId { get; set; } = string.Empty;
+
+    [MaxLength(255)]
+    public string Department { get; set; } = string.Empty;
 
     [MaxLength(31)]
-    public string Role { get; set; }
-
-    public Employee(string username, string password, string fullName, string email, string department, string role) : base(username, password, fullName, email)
-    {
-        Department = department;
-        Role = role;
-    }
+    public string Position { get; set; } = string.Empty;
 }
