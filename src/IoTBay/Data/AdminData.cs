@@ -1,4 +1,5 @@
-﻿using IoTBay.Models;
+﻿/*
+using IoTBay.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace IoTBay.Data;
@@ -28,3 +29,4 @@ public static class AdminData
         }
     }
 }
+*/

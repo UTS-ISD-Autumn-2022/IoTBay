@@ -8,7 +8,7 @@ public class PaymentDetails
     public Guid Id { get; set; }
 
     [MaxLength(31)]
-    public string CardName { get; set; }
+    public string CardName { get; set; } = string.Empty;
 
     [Precision(16)]
     [Column(TypeName = "decimal(16)")]
@@ -27,13 +27,4 @@ public class PaymentDetails
     public decimal ExpiryYear { get; set; }
 
     public Customer Customer { get; set; } = null!;
-
-    public PaymentDetails(string cardName, decimal cardNumber, decimal cardCvc, decimal expiryMonth, decimal expiryYear)
-    {
-        CardName = cardName;
-        CardNumber = cardNumber;
-        CardCvc = cardCvc;
-        ExpiryMonth = expiryMonth;
-        ExpiryYear = expiryYear;
-    }
 }

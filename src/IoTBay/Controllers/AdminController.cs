@@ -34,66 +34,6 @@ public class AdminController : Controller
         return View(await _context.Products.ToListAsync());
     }
 
-    // Login Page
-    [AllowAnonymous]
-    public IActionResult Login()
-    {
-        return View();
-    }
-
-    [AllowAnonymous]
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login([Bind("Username, Password")] LoginDetails loginDetails)
-    {
-        if (ModelState.IsValid)
-        {
-            var user = await _context.Users.Where(user => user.Username == loginDetails.Username).FirstOrDefaultAsync();
-
-            if (user == null)
-            {
-                ModelState.AddModelError("Username", "Invalid Username!");
-                return View(loginDetails);
-            }
-
-            if (!user.VerifyPassword(loginDetails.Password))
-            {
-                ModelState.AddModelError("Password", "Invalid Password");
-                return View(loginDetails);
-            }
-
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Email),
-                new Claim("FullName", user.FullName),
-                new Claim(ClaimTypes.Role, "Admin"),
-            };
-
-            var claimsIdentity = new ClaimsIdentity(
-                claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            var authProperties = new AuthenticationProperties
-            {
-                AllowRefresh = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30),
-                IsPersistent = true,
-                IssuedUtc = DateTimeOffset.UtcNow,
-            };
-
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                authProperties);
-
-            _logger.LogInformation("User {Email} logged in at {Time}.",
-                user.Email, DateTime.UtcNow);
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        return View(loginDetails);
-    }
-
     // GET: Admin/Details/5
     public async Task<IActionResult> Details(int? id)
     {
