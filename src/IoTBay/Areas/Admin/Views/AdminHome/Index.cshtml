@@ -6,9 +6,15 @@
 <h1 class="text-center">@ViewData["Title"]</h1>
 
 <div class="container">
-    <h3>Welcome to the admin page</h3>
+    <h3 class="text-center">Welcome to the admin page</h3>
+    
     <p>
         <a asp-area="Admin" asp-controller="Categories" asp-action="Index">Click here</a>
         to add/edit product categories
+    </p>
+
+    <p>
+        <a asp-area="Admin" asp-controller="Products" asp-action="Index">Click here</a>
+        to add/edit product
     </p>
 </div>

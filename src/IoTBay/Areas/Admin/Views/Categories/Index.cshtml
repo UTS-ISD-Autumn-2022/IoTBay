@@ -1,14 +1,14 @@
-﻿@model IEnumerable<IoTBay.Models.Category>
+﻿@model IEnumerable<Category>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Product Categories";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1 class="text-center text-dark">@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Product Category</a>
 </p>
 <table class="table">
     <thead>
