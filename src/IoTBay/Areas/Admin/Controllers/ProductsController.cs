@@ -16,17 +16,19 @@ namespace IoTBay.Areas.Admin.Controllers;
 [Authorize(Roles = "Admin")]
 public class ProductsController : Controller
 {
-    private readonly IoTBayDbContext _context;
+    private readonly ILogger<ProductsController> _logger;
+    private readonly IoTBayDbContext _ctx;
 
-    public ProductsController(IoTBayDbContext context)
+    public ProductsController(ILogger<ProductsController> logger, IoTBayDbContext ctx)
     {
-        _context = context;
+        _logger = logger;
+        _ctx = ctx;
     }
 
     // GET: Admin/Products
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Products.ToListAsync());
+        return View(await _ctx.Products.ToListAsync());
     }
 
     // GET: Admin/Products/Details/5
@@ -37,7 +39,7 @@ public class ProductsController : Controller
             return NotFound();
         }
 
-        var product = await _context.Products
+        var product = await _ctx.Products
             .FirstOrDefaultAsync(m => m.Id == id);
         if (product == null)
         {
@@ -48,9 +50,15 @@ public class ProductsController : Controller
     }
 
     // GET: Admin/Products/Create
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return View();
+        var categories = await _ctx.Categories.ToListAsync();
+        var createProductModel = new CreateProduct
+        {
+            Categories = categories
+        };
+        
+        return View(createProductModel);
     }
 
     // POST: Admin/Products/Create
@@ -58,12 +66,14 @@ public class ProductsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Description,ImgUrl,StockLevel,OnOrder,Price")] Product product)
+    public async Task<IActionResult> Create([Bind("Name,Description,CategoryId,ImgUrl,StockLevel,OnOrder,Price")] CreateProduct createProduct)
     {
         if (ModelState.IsValid)
         {
-            _context.Add(product);
-            await _context.SaveChangesAsync();
+            _ctx.Add(product); 
+            await _ctx.SaveChangesAsync();
+            
+            _logger.LogInformation("Created new Product: {Name}", product.Name);
             return RedirectToAction(nameof(Index));
         }
         return View(product);
@@ -77,7 +87,7 @@ public class ProductsController : Controller
             return NotFound();
         }
 
-        var product = await _context.Products.FindAsync(id);
+        var product = await _ctx.Products.FindAsync(id);
         if (product == null)
         {
             return NotFound();
@@ -101,8 +111,8 @@ public class ProductsController : Controller
         {
             try
             {
-                _context.Update(product);
-                await _context.SaveChangesAsync();
+                _ctx.Update(product);
+                await _ctx.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -128,7 +138,7 @@ public class ProductsController : Controller
             return NotFound();
         }
 
-        var product = await _context.Products
+        var product = await _ctx.Products
             .FirstOrDefaultAsync(m => m.Id == id);
         if (product == null)
         {
@@ -143,14 +153,14 @@ public class ProductsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var product = await _context.Products.FindAsync(id);
-        _context.Products.Remove(product);
-        await _context.SaveChangesAsync();
+        var product = await _ctx.Products.FindAsync(id);
+        _ctx.Products.Remove(product);
+        await _ctx.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
 
     private bool ProductExists(int id)
     {
-        return _context.Products.Any(e => e.Id == id);
+        return _ctx.Products.Any(e => e.Id == id);
     }
 }
