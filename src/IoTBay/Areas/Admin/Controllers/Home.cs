@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace IoTBay.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[Authorize(Roles = "Admin")]
-public class AdminHomeController : Controller
+[Authorize(Roles = "Admin, Staff")]
+public class Home : Controller
 {
     public IActionResult Index()
     {

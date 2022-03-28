@@ -8,22 +8,22 @@ namespace IoTBay.Models;
  */
 public class CreateProduct
 {
-    public SelectList SelectCategories { get; set; } = new SelectList();
+    public ICollection<SelectListItem> SelectCategories { get; set; } = new List<SelectListItem>();
 
     [MaxLength(63)]
     public string Name { get; set; } = string.Empty;
-    
+
     public string Description { get; set; } = string.Empty;
-    
+
     public int CategoryId { get; set; }
-    
+
     [MaxLength(255)]
     public string ImgUrl { get; set; } = string.Empty;
-    
+
     public int StockLevel { get; set; }
-    
+
     public int OnOrder { get; set; }
-    
+
     [Precision(7, 2)]
     public decimal Price { get; set; }
 }

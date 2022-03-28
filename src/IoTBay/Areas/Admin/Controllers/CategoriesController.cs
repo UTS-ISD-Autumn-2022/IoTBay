@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IoTBay.Areas.Admin.Controllers;
 
-[Authorize(Roles = "Admin")]
 [Area("Admin")]
+[Authorize(Roles = "Admin, Staff")]
 public class CategoriesController : Controller
 {
     private readonly IoTBayDbContext _context;

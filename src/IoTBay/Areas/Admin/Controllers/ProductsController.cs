@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 namespace IoTBay.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin, Staff")]
 public class ProductsController : Controller
 {
     private readonly ILogger<ProductsController> _logger;
@@ -55,9 +55,9 @@ public class ProductsController : Controller
         var categories = await _ctx.Categories.ToListAsync();
         var createProductModel = new CreateProduct
         {
-            Categories = categories
+            SelectCategories = categories.Select(c => new SelectListItem { Value = nameof(c.Id), Text = c.Name }).ToList()
         };
-        
+
         return View(createProductModel);
     }
 
@@ -68,15 +68,32 @@ public class ProductsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Name,Description,CategoryId,ImgUrl,StockLevel,OnOrder,Price")] CreateProduct createProduct)
     {
+        // check if the data is valid
         if (ModelState.IsValid)
         {
-            _ctx.Add(product); 
+            // fetch the category from database
+            var category = await _ctx.Categories.Where(c => c.Id == createProduct.CategoryId).FirstOrDefaultAsync();
+
+            // create a new product to database
+            var product = new Product
+            {
+                Name = createProduct.Name,
+                Description = createProduct.Description,
+                Category = category,
+                ImgUrl = createProduct.ImgUrl,
+                StockLevel = createProduct.StockLevel,
+                OnOrder = createProduct.OnOrder,
+                Price = createProduct.Price,
+            };
+
+            // add to database
+            _ctx.Add(product);
             await _ctx.SaveChangesAsync();
-            
+
             _logger.LogInformation("Created new Product: {Name}", product.Name);
             return RedirectToAction(nameof(Index));
         }
-        return View(product);
+        return View(createProduct);
     }
 
     // GET: Admin/Products/Edit/5
