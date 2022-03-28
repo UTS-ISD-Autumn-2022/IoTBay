@@ -1,12 +1,13 @@
-﻿@model IoTBay.Models.Product
+﻿@model IoTBay.Models.Category
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Edit</h1>
 
-<h4>Product</h4>
+<h4>Category</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,21 +28,6 @@
                 <label asp-for="ImgUrl" class="control-label"></label>
                 <input asp-for="ImgUrl" class="form-control" />
                 <span asp-validation-for="ImgUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StockLevel" class="control-label"></label>
-                <input asp-for="StockLevel" class="form-control" />
-                <span asp-validation-for="StockLevel" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OnOrder" class="control-label"></label>
-                <input asp-for="OnOrder" class="form-control" />
-                <span asp-validation-for="OnOrder" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
