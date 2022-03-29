@@ -35,3 +35,24 @@ VALUES (
         'https://au.element14.com/wcsstore/ExtendedSitesCatalogAssetStore/cms/asset/images/apac/common/homepage_new/optoelectronics.jpg'
 );
 GO;
+
+INSERT INTO [Products] ([Name], [Description], [ImgUrl], [CategoryId], [StockLevel], [OnOrder], [Price])
+VALUES (
+        'Starter Kit, Arduino UNO, Projects Book, Breadboard, Components Kit (English)',
+        'The K000007 is an Arduino starter kit. This kit walks us through the basics in a hands on way, with creative projects we build by learning, thanks to a selection of the most common and useful electronic components with a selection of 15 projects that start from a low complexity, in order to learn the basic of electronic, to a major one, using components that let to control the physical world throw different kind of sensor. Once we have mastered this knowledges, we will have a palette of software and circuits that we can use to create something beautiful and make someone smile with what we invent, that is the reason why we will find more components than the required from the projects of the book. Then build it, hack it and share it.',
+        'https://au.element14.com/arduino/k000007/starter-kit-arduino-with-uno-board/dp/2250862',
+        2,
+        35,
+        10,
+        175.50
+);
+INSERT INTO [Products] ([Name], [Description], [ImgUrl], [CategoryId], [StockLevel], [OnOrder], [Price])
+VALUES (
+        'Development Board, Arduino Uno SMD, Revision 3, ATmega328 MCU, 14 Digital I/O, 6 Analogue I/P, 5V',
+        'The A000073 is a Arduino Uno SMD R3 development board based on the ATmega328 microcontroller. The ATmega328 is a low power CMOS 8bit microcontroller based on the AVR enhanced RISC architecture. By executing powerful instructions in a single clock cycle, the ATmega328 achieves throughputs approaching 1MIPS per MHz allowing the system designer to optimize power consumption versus processing speed. The Arduino Uno SMD R3 evaluation board has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16MHz crystal oscillator, a USB connection, a power jack, an ICSP header and a reset button. It contains everything needed to support the microcontroller, simply connect it to a computer with a USB cable or power it with a AC to DC adapter or battery to get started. The Uno differs from all preceding boards in that it does not use the FTDI USB to serial driver chip.',
+        'https://au.element14.com/productimages/standard/en_GB/2285200-40.jpg',
+        2,
+        25,
+        13,
+        42.50
+);

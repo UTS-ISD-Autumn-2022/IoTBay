@@ -28,7 +28,7 @@ public class ProductsController : Controller
     // GET: Admin/Products
     public async Task<IActionResult> Index()
     {
-        return View(await _ctx.Products.ToListAsync());
+        return View(await _ctx.Products.Include(p => p.Category).ToListAsync());
     }
 
     // GET: Admin/Products/Details/5
@@ -68,13 +68,16 @@ public class ProductsController : Controller
         // check if the data is valid
         if (ModelState.IsValid)
         {
-            var category = await _ctx.Categories.Where(c => c.Id == int.Parse(createProduct.CategoryId)).FirstOrDefaultAsync();
+            var category = await _ctx.Categories
+                .Include(c => c.Products)
+                .Where(c => c.Id == int.Parse(createProduct.CategoryId))
+                .FirstOrDefaultAsync();
+
             // create a new product to database
             var product = new Product
             {
                 Name = createProduct.Name,
                 Description = createProduct.Description,
-                Category = category,
                 ImgUrl = createProduct.ImgUrl,
                 StockLevel = createProduct.StockLevel,
                 OnOrder = createProduct.OnOrder,
@@ -82,7 +85,7 @@ public class ProductsController : Controller
             };
 
             // add to database
-            _ctx.Add(product);
+            category.Products.Add(product);
             await _ctx.SaveChangesAsync();
 
             _logger.LogInformation("Created new Product: {Name}", product.Name);
