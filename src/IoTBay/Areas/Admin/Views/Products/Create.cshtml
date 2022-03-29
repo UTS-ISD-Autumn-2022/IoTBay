@@ -1,4 +1,4 @@
-﻿@model IoTBay.Models.CreateProduct
+﻿@model CreateProductViewModel
 @{
     ViewData["Title"] = "Add Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -30,7 +30,7 @@
 
 				<div class="form-group mb-2">
 					<label asp-for="CategoryId" class="control-label"></label>
-					<select asp-for="CategoryId" class="form-select" asp-items="Model.SelectCategories"></select>
+					<select asp-for="CategoryId" asp-items="Model.SelectCategories" class="form-select"></select>
 					<span asp-validation-for="CategoryId" class="text-danger"></span>
 				</div>
 

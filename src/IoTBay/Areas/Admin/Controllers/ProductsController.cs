@@ -52,13 +52,10 @@ public class ProductsController : Controller
     // GET: Admin/Products/Create
     public async Task<IActionResult> Create()
     {
-        var categories = await _ctx.Categories.ToListAsync();
-        var createProductModel = new CreateProduct
+        return View(new CreateProductViewModel
         {
-            SelectCategories = categories.Select(c => new SelectListItem { Value = nameof(c.Id), Text = c.Name }).ToList()
-        };
-
-        return View(createProductModel);
+            SelectCategories = new SelectList(await _ctx.Categories.ToListAsync(), nameof(Category.Id), nameof(Category.Name))
+        });
     }
 
     // POST: Admin/Products/Create
@@ -66,14 +63,12 @@ public class ProductsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Name,Description,CategoryId,ImgUrl,StockLevel,OnOrder,Price")] CreateProduct createProduct)
+    public async Task<IActionResult> Create([Bind("Name,Description,CategoryId,ImgUrl,StockLevel,OnOrder,Price")] CreateProductViewModel createProduct)
     {
         // check if the data is valid
         if (ModelState.IsValid)
         {
-            // fetch the category from database
-            var category = await _ctx.Categories.Where(c => c.Id == createProduct.CategoryId).FirstOrDefaultAsync();
-
+            var category = await _ctx.Categories.Where(c => c.Id == int.Parse(createProduct.CategoryId)).FirstOrDefaultAsync();
             // create a new product to database
             var product = new Product
             {

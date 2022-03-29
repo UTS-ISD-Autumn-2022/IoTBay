@@ -2,7 +2,7 @@
 
 namespace IoTBay.Models;
 
-public class Login
+public class LoginViewModel
 {
     [MaxLength(63)]
     public string Username { get; set; } = string.Empty;
