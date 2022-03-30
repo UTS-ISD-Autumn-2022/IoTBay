@@ -47,8 +47,25 @@ public class AccountController : Controller
                 return View(login);
             }
         }
-
         return View(login);
+    }
+
+    public IActionResult Logout()
+    {
+        return View();
+    }
+
+    [HttpPost] 
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Logout(string returnUrl = null)
+    {
+        await _signInManager.SignOutAsync();
+        _logger.LogInformation("User logged out.");
+        if (returnUrl != null)
+        {
+            return Redirect(returnUrl);
+        }
+        return View();
     }
 
     public IActionResult Register()
