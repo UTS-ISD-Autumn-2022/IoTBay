@@ -9,11 +9,13 @@ public class AccountController : Controller
 {
     private readonly ILogger<AccountController> _logger;
     private readonly SignInManager<IdentityUser> _signInManager;
+	private readonly UserManager<IdentityUser> _userManager;
 
-    public AccountController(ILogger<AccountController> logger, SignInManager<IdentityUser> signInManager)
+    public AccountController(ILogger<AccountController> logger, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
     {
         _logger = logger;
         _signInManager = signInManager;
+		_userManager = userManager;
     }
 
     [Authorize]
@@ -72,4 +74,29 @@ public class AccountController : Controller
     {
         return View();
     }
+
+	[HttpPost]
+	
+	public async Task<IActionResult> Register([Bind("Username, Password, Email")] RegisterViewModel register, string? returnUrl = null)
+	{
+		returnUrl ??= Url.Content("~/Index");
+		if (ModelState.IsValid)
+		{
+			var user = new IdentityUser { UserName = register.Username, Email = register.Email };
+			var regResult = await _userManager.CreateAsync(user, register.Password);
+			if (regResult.Succeeded)
+			{
+				_logger.LogInformation("User created a new account with password.");	
+				await _signInManager.SignInAsync(user, isPersistent: false);
+				_logger.LogInformation("User logged in");
+				return RedirectToAction("Index", "Home");
+			}
+			else foreach (var error in regResult.Errors)
+			{
+				ModelState.AddModelError(string.Empty, "Registration failed.");
+				return View(register);
+			}
+		}
+		return View(register);
+	}
 }
