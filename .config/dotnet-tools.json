@@ -13,6 +13,18 @@
       "commands": [
         "dotnet-aspnet-codegenerator"
       ]
+    },
+    "sqlhydra.sqlserver": {
+      "version": "0.810.0",
+      "commands": [
+        "sqlhydra-mssql"
+      ]
+    },
+    "fantomas-tool": {
+      "version": "4.7.5",
+      "commands": [
+        "fantomas"
+      ]
     }
   }
 }

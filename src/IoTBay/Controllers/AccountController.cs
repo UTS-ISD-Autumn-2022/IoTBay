@@ -29,7 +29,7 @@ public class AccountController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login([Bind("Username, Password, RememberMe")] Login login, string? returnUrl = null)
+    public async Task<IActionResult> Login([Bind("Username, Password, RememberMe")] LoginViewModel login, string? returnUrl = null)
     {
         returnUrl ??= Url.Content("~/");
 

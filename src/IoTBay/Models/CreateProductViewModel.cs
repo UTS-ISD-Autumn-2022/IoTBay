@@ -6,16 +6,16 @@ namespace IoTBay.Models;
 /*
  * This is model for displaying and binding data from the Admin/Products/Create view
  */
-public class CreateProduct
+public class CreateProductViewModel
 {
-    public ICollection<SelectListItem> SelectCategories { get; set; } = new List<SelectListItem>();
+    public SelectList SelectCategories { get; set; } = null!;
 
     [MaxLength(63)]
     public string Name { get; set; } = string.Empty;
 
     public string Description { get; set; } = string.Empty;
 
-    public int CategoryId { get; set; }
+    public string CategoryId { get; set; } = string.Empty;
 
     [MaxLength(255)]
     public string ImgUrl { get; set; } = string.Empty;

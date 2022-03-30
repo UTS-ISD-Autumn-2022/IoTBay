@@ -1,0 +1,10 @@
+[general]
+connection = "Server=34.151.96.119; Database=iotbaydb-test; User Id=sqlserver; Password=ekvkdK2%^8; TrustServerCertificate=True"
+output = "./src/IoTBayAdminApi/Models.fs"
+namespace = "IoTBayAdminApi.Models"
+cli_mutable = true
+[readers]
+reader_type = "Microsoft.Data.SqlClient.SqlDataReader"
+[filters]
+include = ["dbo/Categories", "dbo/Products"]
+exclude = []
