@@ -55,11 +55,6 @@ public class AccountController : Controller
         return View(login);
     }
 
-    public IActionResult Logout()
-    {
-        return View();
-    }
-
     [HttpPost] 
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout(string returnUrl = null)
@@ -70,7 +65,8 @@ public class AccountController : Controller
         {
             return Redirect(returnUrl);
         }
-        return View();
+        
+        return Redirect("/");
     }
 
     public IActionResult Register()
@@ -79,7 +75,7 @@ public class AccountController : Controller
     }
 
 	[HttpPost]
-	
+    [ValidateAntiForgeryToken]	
 	public async Task<IActionResult> Register([Bind("Username, Password, Email, FullName, Address")] RegisterViewModel register, string? returnUrl = null)
 	{
 		returnUrl ??= Url.Content("~/Index");
