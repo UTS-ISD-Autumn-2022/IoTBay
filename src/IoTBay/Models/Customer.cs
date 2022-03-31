@@ -6,6 +6,9 @@ public class Customer
     public Guid Id { get; set; }
     
     public string LoginCredentialsId { get; set; } = string.Empty;
+
+    [MaxLength(63)]
+    public string FullName { get; set; } = string.Empty;
     
     [MaxLength(255)]
     public string Address { get; set; } = string.Empty;
