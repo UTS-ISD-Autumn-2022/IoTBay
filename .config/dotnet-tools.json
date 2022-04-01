@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "dotnet-ef": {
+      "version": "6.0.3",
+      "commands": [
+        "dotnet-ef"
+      ]
+    },
+    "dotnet-aspnet-codegenerator": {
+      "version": "6.0.2",
+      "commands": [
+        "dotnet-aspnet-codegenerator"
+      ]
+    },
+    "sqlhydra.sqlserver": {
+      "version": "0.810.0",
+      "commands": [
+        "sqlhydra-mssql"
+      ]
+    },
+    "fantomas-tool": {
+      "version": "4.7.5",
+      "commands": [
+        "fantomas"
+      ]
+    }
+  }
+}

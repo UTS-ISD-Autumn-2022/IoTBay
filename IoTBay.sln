@@ -3,13 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoTBay", "IoTBay.csproj", "{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1B9D1435-CE17-43F4-B2E3-D6792C7F54D4}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoTBay", "src\IoTBay\IoTBay.csproj", "{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B80145D1-2DC6-4D1F-9FCA-0A08D147446C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CA01211F-6845-4F42-8F78-C60937F6D71D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoTBay.Tests", "tests\IoTBay.Tests\IoTBay.Tests.csproj", "{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "IoTBayAdminApi", "src\IoTBayAdminApi\IoTBayAdminApi.fsproj", "{99BA1B14-D66E-4FB3-917B-CABDFB52F516}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{E1D9B75A-8462-424F-A93B-B271349F5A3F}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		sqlhydra-mssql.toml = sqlhydra-mssql.toml
 	EndProjectSection
 EndProject
 Global
@@ -18,19 +25,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5769AA7B-18A2-4BC7-B599-2EF26E4D7E2B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E28B8C4B-3D13-42EF-9482-0463D5F8E61D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99BA1B14-D66E-4FB3-917B-CABDFB52F516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99BA1B14-D66E-4FB3-917B-CABDFB52F516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99BA1B14-D66E-4FB3-917B-CABDFB52F516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99BA1B14-D66E-4FB3-917B-CABDFB52F516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1F0888ED-4FA9-4310-8E63-4FEDB1E89568} = {1B9D1435-CE17-43F4-B2E3-D6792C7F54D4}
+		{EE9F3F5D-72EA-4365-A5B5-93511179F6B2} = {CA01211F-6845-4F42-8F78-C60937F6D71D}
+		{99BA1B14-D66E-4FB3-917B-CABDFB52F516} = {1B9D1435-CE17-43F4-B2E3-D6792C7F54D4}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1E1D4FD7-9067-4CC4-9BD7-3EED1AFFD462}
+		SolutionGuid = {07700DB6-3FD7-40FD-97DB-A73AE99D756E}
 	EndGlobalSection
 EndGlobal
