@@ -1,21 +1,25 @@
 ﻿using System.Diagnostics;
+using IoTBay.Data;
 using IoTBay.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IoTBay.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    //test
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IoTBayDbContext _ctx;
+
+    public HomeController(ILogger<HomeController> logger, IoTBayDbContext ctx)
     {
         _logger = logger;
+        _ctx = ctx;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        return View(await _ctx.Products.ToListAsync());
     }
 
     public IActionResult Privacy()

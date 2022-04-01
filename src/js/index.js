@@ -1,2 +1,5 @@
 import '@popperjs/core';
-import 'bootstrap';
+import * as bootstrap from 'bootstrap';
+
+const modal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+modal.show();
